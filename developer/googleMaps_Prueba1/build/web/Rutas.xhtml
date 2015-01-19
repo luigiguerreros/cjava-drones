@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>       
+            <h:form>
+             <p:panelGrid id="grid1" columns="1">
+                    
+                    <p:outputLabel for="latitud">Direccion Origen:</p:outputLabel>
+                    <p:inputText id="latitud" value="#{ruta.origen}"  required="true" requiredMessage="Ingrese direccion" size="100"/>
+
+                    <p:outputLabel for="longitud">Direccion Destino:</p:outputLabel>
+                    <p:inputText id="longitud" value="#{ruta.destino}" required="true" requiredMessage="Ingrese direccion" size="100" />
+                    
+                    <p:outputLabel for="restricciones" value="restricciones" />
+                    <h:selectOneMenu id="restricciones" value="ss">
+                        <f:selectItem itemValue="1" itemLabel="Item 1" />
+                        <f:selectItem itemValue="2" itemLabel="Item 2" />	   							
+                    </h:selectOneMenu>	
+                    
+                    
+                    <p:commandButton ajax="false" id="btnBuscarDireccion" action="#{geoLatiLong.btnBuscar()}" value="Calcular" style="width:900px; "  />
+                    
+                    <h:inputHidden id="status" value="#{geoLatiLong.status}"/>
+                    
+                    
+                    <p:outputLabel for="direccionEncontrada">direccion encontrada:</p:outputLabel>
+                    <p:inputText id="direccionEncontrada" value="#{geoLatiLong.direccionEncontrada}"  requiredMessage="Ingrese direccion" size="100" />
+                    <p:inputTextarea id="itxaDireccion" value="#{geoLatiLong.direccionEncontradaList}" style="width: 900px" />
+                    
+                    <p:outputLabel for="codiPostal">Codigo Postal: </p:outputLabel>
+                    <p:inputText id="codiPostal" value="#{geoLatiLong.codPostal}" requiredMessage="Ingrese direccion"  size="100"/>
+
+                    <p:outputLabel for="elevacion">Elevacion: </p:outputLabel>
+                    <p:inputText id="elevacion" value="#{geoLatiLong.elevacion}"  requiredMessage="Ingrese direccion" size="100"/>
+
+                    <p:outputLabel for="resolucion">Resolucion: </p:outputLabel>
+                    <p:inputText id="resolucion" value="#{geoLatiLong.resolucion}"  requiredMessage="Ingrese direccion" size="100"/>
+                        
+                    <p:commandButton ajax="false" id="mostrarMapa" action="#{geoCodigo.btnMostrarMapa()}" value="ver Mapa" style="width:900px; " />
+
+                    <iframe id="verMapa" src="#{geoLatiLong.srcGoogle}" width="100%" height="100%" frameborder="0">
+                        
+                    </iframe>
+                    
+                </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>
+
