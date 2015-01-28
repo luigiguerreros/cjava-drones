@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>GeoLocalizacion por nombre</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <h:form>
+                <p:panelGrid id="grid1" columns="1">
+                    <p:outputLabel for="txtDireccion">Ingrese direccion:</p:outputLabel>
+                    <p:inputText id="txtDireccion" value="#{geoCodigo.direccion}" required="true" requiredMessage="Ingrese direccion" size="100"/>
+                    <p:commandButton ajax="false" id="btnBuscarDireccion" action="#{geoCodigo.btnBuscar()}" value="buscar" style="width:900px; "  />
+                    
+                    <h:inputHidden id="status" value="#{geoCodigo.status}"/>
+                    
+                    <p:outputLabel for="latitud">latitud:</p:outputLabel>
+                    <p:inputText id="latitud" value="#{geoCodigo.latitud}"  requiredMessage="Ingrese direccion" size="100"/>
+
+                    <p:outputLabel for="longitud">longitud:</p:outputLabel>
+                    <p:inputText id="longitud" value="#{geoCodigo.longitud}"  requiredMessage="Ingrese direccion" size="100" />
+
+                    <p:outputLabel for="direccionEncontrada">direccion encontrada:</p:outputLabel>
+                    <p:inputText id="direccionEncontrada" value="#{geoCodigo.direccionEncontrada}"  requiredMessage="Ingrese direccion" size="100" />
+                    
+                    <p:outputLabel for="codiPostal">Codigo Postal: </p:outputLabel>
+                    <p:inputText id="codiPostal" value="#{geoCodigo.codPostal}" requiredMessage="Ingrese direccion"  size="100"/>
+
+                    <p:outputLabel for="elevacion">Elevacion: </p:outputLabel>
+                    <p:inputText id="elevacion" value="#{geoCodigo.elevacion}"  requiredMessage="Ingrese direccion" size="100"/>
+
+                    <p:outputLabel for="resolucion">Resolucion: </p:outputLabel>
+                    <p:inputText id="resolucion" value="#{geoCodigo.resolucion}"  requiredMessage="Ingrese direccion" size="100"/>
+                        
+                    <p:commandButton ajax="false" id="mostrarMapa" action="#{geoCodigo.btnMostrarMapa()}" value="ver Mapa" style="width:900px; " />
+
+                    <iframe id="verMapa" src="#{geoCodigo.srcGoogle}" width="100%" height="100%" frameborder="0">
+                        
+                    </iframe>
+                    
+                </p:panelGrid>
+
+            </h:form>
+        </h:body>
+
+    </f:view>
+</html>
+
